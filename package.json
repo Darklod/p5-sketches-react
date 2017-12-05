@@ -17,5 +17,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/Darklod/p5-sketches-react.git"
+  },
+  "devDependencies": {
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6"
   }
 }

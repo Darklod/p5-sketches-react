@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import About from './About';
 import Projects from './Projects/Projects';
 import Details from './Projects/Details';
-import Project from './Projects/Project';
+import Sketch from './Projects/Sketch';
 
 class App extends Component {
   render() {
@@ -25,7 +25,7 @@ class App extends Component {
           <Route exact path="/" component={Projects}/>
           <Route path="/about" component={About}/>
           <Route path="/projects" component={Projects}/>
-          <Route path="/projects/:id" component={Project}/>
+          <Route exact path="/projects/:id" component={Sketch}/>
           <Route path="/projects/:id/details" component={Details}/>
         </div>
       </Router>

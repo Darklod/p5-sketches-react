@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Project from './Project';
 
 const Grid = (props) => (
     <div>
         <ul>
-            {props.list.map(function (item) {
-                return <li><Project item={item} /></li>;
+            {props.list.map((item, index) => {
+                return <li><Project key={index} item={item} /></li>;
             })}
         </ul>
     </div>

@@ -1,14 +1,15 @@
-import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 const Project = (props) => (
     <div>
-        <Link to={`/projects/${props.item}/details`}>
-            Dettagli Progetto {props.item}
-        </Link>
-        <Link to={`/projects/${props.item}`}>
-            Progetto {props.item}
-        </Link>
+        Questo è un progetto<br/>
+        <img alt="thumbnail"/>
+        <p>
+            <Link to={`/projects/${props.item}/details`}>
+                {props.item}
+            </Link>
+        </p>
     </div>
 )
 
