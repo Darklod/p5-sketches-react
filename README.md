@@ -30,7 +30,7 @@ npm start
 * [ReactJS](https://reactjs.org/) - The web framework used
 * [Npm](https://www.npmjs.com/) - Dependency Management
 * [P5](https://p5js.org/) - The framework used for the sketches
-* [UIKit](https://getuikit.com/) - the css framework used
+* [Bulma](https://bulma.io/) - the css framework used
 
 ## Authors
 
