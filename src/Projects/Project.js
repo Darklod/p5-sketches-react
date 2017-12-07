@@ -4,7 +4,7 @@ import { Card, Content } from 'reactbulma'
 
 const Project = (props) => (
     <Card>
-        <Card.Image src='http://via.placeholder.com/1365x630' square='16by9' alt="thumbnail"/>
+        <Card.Image src={`/sketches/${props.item}/thumbnail.webp`} square='2by1' alt="thumbnail"/>
         <Card.Content>
             <Content>
                 <span className="is-centered">
