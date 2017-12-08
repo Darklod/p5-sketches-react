@@ -30,7 +30,8 @@ npm start
 * [ReactJS](https://reactjs.org/) - The web framework used
 * [Npm](https://www.npmjs.com/) - Dependency Management
 * [P5](https://p5js.org/) - The framework used for the sketches
-* [Bulma](https://bulma.io/) - the css framework used
+* [Bulma](https://bulma.io/) - The css framework used
+* [React-Bulma](https://github.com/kulakowka/react-bulma) - React components for Bulma
 
 ## Authors
 

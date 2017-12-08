@@ -1,0 +1,7 @@
+{
+    "description": "Generazione di alberi attraverso un'algoritmo ricorsivo.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

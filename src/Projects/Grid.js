@@ -17,7 +17,7 @@ class Grid extends Component {
         }
 
         this.setState({
-            arr : tmp
+            arr: tmp
         });
     }
 
@@ -25,7 +25,7 @@ class Grid extends Component {
         return (
             <div>
                 {this.state.arr.map((item, index) => {
-                    return <Row key={index} items={item}/>
+                    return <Row key={'row' + index} items={item}/>
                 })}
             </div>
         )
