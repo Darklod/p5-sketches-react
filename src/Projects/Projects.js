@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import Grid from './Grid';
+
 import { Section, Icon } from 'reactbulma';
 
 class Projects extends Component {
+    constructor (props) {
+        super(props);
+        this.state = {
+            projects: []
+        }
+        this.handleScroll = this.handleScroll.bind(this);
+    }
+
     render () {
         return (
             <Section>
@@ -11,7 +20,7 @@ class Projects extends Component {
                         <i className="fa fa-chevron-up fa-lg"></i>
                     </Icon>
                 </div>
-                <Grid list={["Dragon Curve", "Fractal Trees", "C", "D", "E", "F", "G", "H", "I", "J", "L", "M", "N", "O"]} key={0}/>
+                {this.state.projects}
             </Section>
         )
     }
@@ -24,13 +33,16 @@ class Projects extends Component {
         });
     }
 
-    constructor(props) {
-        super(props);
-        this.handleScroll = this.handleScroll.bind(this);
-    }
-    
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
+        fetch('/sketches/projects.json').then((res) => {
+            return res.json()
+        }).then((data) => {
+            console.log(data)
+            this.setState({
+                projects: <Grid list={data} key={0}/>
+            });
+        })
     };
     
     componentWillUnmount() {
