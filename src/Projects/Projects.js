@@ -6,7 +6,7 @@ class Projects extends Component {
     render () {
         return (
             <Section>
-                <div className="up" onClick={() => this.scrollToTop()}>
+                <div ref="up" className="up" onClick={() => this.scrollToTop()}>
                     <Icon>
                         <i className="fa fa-chevron-up fa-lg"></i>
                     </Icon>
@@ -23,6 +23,24 @@ class Projects extends Component {
             top: 0
         });
     }
+
+    constructor(props) {
+        super(props);
+        this.handleScroll = this.handleScroll.bind(this);
+    }
+    
+    componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll);
+    };
+    
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+    };
+    
+    handleScroll(event) {
+        var top = event.target.scrollingElement.scrollTop;
+        this.refs.up.style.opacity = top/100;
+    };
 }
 
 // COSE.... filtri categorie... boh Elenco<br/><br/>

@@ -11,6 +11,7 @@ footer {
 .footer {
   background-color: hsl(0, 0%, 21%);
   padding: 1rem;
+  padding-top: 1.5rem;
   color: white;
 }
 
@@ -97,8 +98,8 @@ pre {
   display: block;
   position: fixed;
   margin: auto;
-  right: 50px;
-  bottom: 75px;
+  right: 25px;
+  bottom: 100px;
   z-index: 1000;
   height: 40px;
   width: 40px;
@@ -109,4 +110,18 @@ pre {
   padding-top: 8px;
   -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+}
+
+@media screen and (max-width:860px){
+  .up {
+    right: 5px;
+  }
+}
+
+@media screen and (max-width:640px){
+  .up {
+    right: 0;
+    left: 0;
+    bottom: 128px;
+  }
 }
