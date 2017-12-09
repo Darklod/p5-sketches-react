@@ -76,3 +76,37 @@ img {
   line-height: 150px;
   text-align: center;
 }
+
+.wide {
+  width: 100%;
+}
+
+.title:not(:last-child), .subtitle:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+#pan-sketch p {
+  margin-bottom: 0.5rem;
+}
+
+pre {
+  height: 400px;
+}
+
+.up {
+  display: block;
+  position: fixed;
+  margin: auto;
+  right: 50px;
+  bottom: 75px;
+  z-index: 1000;
+  height: 40px;
+  width: 40px;
+  background-color: hsla(40,100%,60%,1);
+  color: white;
+  border-radius: 50px;
+  padding-left: 8px;
+  padding-top: 8px;
+  -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+}

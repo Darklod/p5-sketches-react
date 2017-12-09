@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {} from 'react-router-dom';
 import axios from 'axios';
 
-import {Section, Box, Button, Level} from 'reactbulma';
+import {Section, Box, Button } from 'reactbulma';
 
 class Project extends Component {
     constructor(props) {
@@ -10,8 +10,9 @@ class Project extends Component {
         this.state = {
             description: '',
             scripts: [],
-            toggle: true,
-            active: 0
+            toggle: false,
+            active: 0,
+            loading: false
         };
     }
 
@@ -20,29 +21,33 @@ class Project extends Component {
             <div>
                 <Section>
                     <div className="columns">
-                        <div className="column is-one-quarter"> 
+                        <div className="column is-narrow"> 
                             <Box className="back">
-                                <Level>
-                                    <Level.Left>
-                                        <Level.Item>
-                                            <Button warning>Back</Button>
-                                        </Level.Item>
-                                    </Level.Left>
-                                    <Level.Right>
-                                        <Level.Item>
-                                        <div className="field">
-                                            <input id="switchExample" type="checkbox" className="switch is-medium" 
-                                                    onChange={() => { 
-                                                        this.setState({
-                                                            toggle: !this.state.toggle 
-                                                        }); 
-                                                    }}
-                                                    checked={this.state.toggle}/>
-                                            <label htmlFor="switchExample">{this.state.toggle?'Sketch':'Scripts'}</label>
-                                        </div>
-                                        </Level.Item>
-                                    </Level.Right>
-                                </Level>
+                                <div className="columns">
+                                    <div className="column">
+                                        <Button className="wide" danger onClick={() => { this.props.history.push('/') }}>Back</Button>
+                                    </div>
+                                    <div className="column">
+                                        {/*
+                                            <div className="field">
+                                                <input id="switchExample" type="checkbox" className="switch is-medium" 
+                                                        onChange={() => { 
+                                                            this.setState({
+                                                                toggle: !this.state.toggle 
+                                                            }); 
+                                                        }}
+                                                        checked={this.state.toggle}/>
+                                                <label htmlFor="switchExample">{this.state.toggle?'Sketch':'Scripts'}</label>
+                                            </div>
+                                        */}
+                                        <Button className="wide" info onClick={() => { 
+                                            this.setState({
+                                                toggle: !this.state.toggle 
+                                            }); }}>
+                                            {this.state.toggle ? 'Sketch' : 'Scripts'}
+                                        </Button>
+                                    </div>
+                                </div>
                             </Box>
                             {!this.state.toggle?'':
                             <Box id="scripts">
@@ -73,9 +78,17 @@ class Project extends Component {
                                     <br/>
                                     <h4 className="title is-4 has-text-dark">{this.props.match.params.id}</h4>
                                     <p>{this.state.description}</p>
-                                    <Button className="is-pulled-right is-info">
-                                        <a href={`/sketches/${this.props.match.params.id}`} className="has-text-white">Open</a>
-                                        {/*
+                                    
+                                    <Button className="is-pulled-right is-info" onClick={()=>{ 
+                                        this.setState({ loading: true });  
+                                        //this.props.history.push(`/sketches/${this.props.match.params.id}`);
+                                        setTimeout(()=> {
+                                            window.location.href = `/sketches/${this.props.match.params.id}`;
+                                        }, 1500);
+                                    }}>
+                                    Open
+                                        {/*<a href={`/sketches/${this.props.match.params.id}`} className="has-text-white">Open</a>
+                                        
                                             <Link to={`/sketches/${match.params.id}`} className="has-text-white">
                                                 Open
                                             </Link>
@@ -97,11 +110,19 @@ class Project extends Component {
                                     })}
                                 </Box>
                             }
+                            
+                            <div className={"pageloader " + (this.state.loading?'is-active':'')}><span className="title">Loading...</span></div>
                         </div>
                     </div>
                 </Section>
             </div>
         )
+    }
+
+    componentWillUnmount() {
+        this.setState({
+            loading: false
+        })
     }
 
     componentDidMount() {
