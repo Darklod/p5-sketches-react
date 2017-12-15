@@ -1,0 +1,7 @@
+{
+    "description": "Disegni formati da linee.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

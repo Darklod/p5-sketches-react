@@ -1,0 +1,8 @@
+{
+    "description": "Generazione di un labirinto attraverso un algoritmo di ricerca profonda (depth-first search) con backtracking.",
+    "scripts": [
+        "cell.js",
+        "sketch.js",
+        "index.html"
+    ]
+}

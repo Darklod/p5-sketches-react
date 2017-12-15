@@ -1,0 +1,7 @@
+{
+    "description": "Rapprasentazione di una lossodromia attraverso una formula parametrica.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

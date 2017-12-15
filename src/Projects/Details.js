@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import {} from 'react-router-dom';
+import React, { Component } from 'react';
 import axios from 'axios';
 
 import {Section, Box, Button } from 'reactbulma';
@@ -81,18 +80,12 @@ class Project extends Component {
                                     
                                     <Button className="is-pulled-right is-info" onClick={()=>{ 
                                         this.setState({ loading: true });  
-                                        //this.props.history.push(`/sketches/${this.props.match.params.id}`);
                                         setTimeout(()=> {
-                                            window.location.href = `/sketches/${this.props.match.params.id}`;
+                                            this.props.history.push(`/projects/${this.props.match.params.id}`);
+                                            // window.location.href = `/sketches/${this.props.match.params.id}`;
                                         }, 1500);
                                     }}>
                                     Open
-                                        {/*<a href={`/sketches/${this.props.match.params.id}`} className="has-text-white">Open</a>
-                                        
-                                            <Link to={`/sketches/${match.params.id}`} className="has-text-white">
-                                                Open
-                                            </Link>
-                                        */}
                                     </Button>
                                     <div className="is-clearfix"></div>
                                 </Box>
@@ -145,7 +138,7 @@ class Project extends Component {
             });
 
             Promise.all(promises).then((res) => {
-                console.log(res)
+                // console.log(res)
                 this.setState({scripts: scripts})
             })
         }).catch((err) => {

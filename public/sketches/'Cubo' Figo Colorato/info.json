@@ -1,0 +1,7 @@
+{
+	"description": "Insieme di linee collegate da alcuni punti della superfice di un cubo al centro, che è possibile ruotare.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

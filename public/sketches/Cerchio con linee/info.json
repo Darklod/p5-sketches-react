@@ -1,0 +1,7 @@
+{
+	"description": "Insieme di punti che formano un cerchio e linee che ruotano rispetto al centro.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

@@ -1,0 +1,7 @@
+{
+    "description": "Rappresentazione di una molecola di Dopamina.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

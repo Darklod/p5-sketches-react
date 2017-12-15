@@ -1,0 +1,7 @@
+{
+	"description": "Albero di natale generato attraverso una elica.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

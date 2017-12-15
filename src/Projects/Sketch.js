@@ -1,15 +1,17 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Button } from 'reactbulma/lib/components';
 
-const Sketch = ({match}) => (
-    <div>
-        <Link to={`/projects`}>
-            back
-        </Link>
-        <div id="wrapper">
-            
-        </div>
-    </div>
-)
+class Sketch extends React.Component {
+    render () {
+        return (
+            <div id="wrapper">
+                <Button danger onClick={() => this.props.history.goBack()}>
+                    back
+                </Button>
+                <iframe title="sketch" src={`/sketches/${this.props.match.params.id}`} />
+            </div>
+        )
+    }
+}
 
 export default Sketch;

@@ -1,5 +1,5 @@
 {
-    "description": "CIAOOOOOOOO",
+    "description": "Frattale \"dragon curve\" creato usano il sistema di Lindenmayer (L-System).",
     "scripts": [
         "lsystem.js",
         "sketch.js",

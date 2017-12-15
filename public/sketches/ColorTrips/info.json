@@ -1,0 +1,7 @@
+{
+	"description": "Giochi di colore in una spirale.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

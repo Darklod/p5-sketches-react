@@ -1,0 +1,7 @@
+{
+	"description": "Disegno di un cuore attraverso le corde di un cerchio.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

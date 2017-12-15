@@ -4,8 +4,8 @@ function setup(){
 
 function draw () {
 	background(145, 233, 255);
-	recursiveDraw(width/4, height, 110, 0, 12);
-	recursiveDraw(width - width/4, height, 110, 0, 12);
+	//recursiveDraw(width/4, height, 110, 0, 12);
+	//recursiveDraw(width - width/4, height, 110, 0, 12);
 	recursiveDraw(width/2, height, 130, 0, 12);
 	noLoop();
 }

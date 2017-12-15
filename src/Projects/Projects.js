@@ -38,7 +38,8 @@ class Projects extends Component {
         fetch('/sketches/projects.json').then((res) => {
             return res.json()
         }).then((data) => {
-            console.log(data)
+            // console.log(data)
+            data = data.filter((x) => x.indexOf('.') === -1);
             this.setState({
                 projects: <Grid list={data} key={0}/>
             });
