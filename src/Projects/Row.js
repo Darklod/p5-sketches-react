@@ -4,7 +4,7 @@ import Project from './Project';
 const Row = (props) => (
     <div className="columns">
         {props.items.map((item, index) => {
-            return <div className="column is-one-quarter"><Project key={index} item={item}/></div>;
+            return <div className="column is-one-quarter"><Project key={Math.random()} item={item} folder={props.folder}/></div>;
         })}
     </div>
 )

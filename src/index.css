@@ -1,5 +1,4 @@
 body {
-  padding-top: 20px;    
   /*background: #03A9F4;*/
   background: linear-gradient(hsla(40,100%,60%,1),#03A9F4);
 }
@@ -120,37 +119,49 @@ pre {
     left: 0;
     bottom: 128px;
   }
-}
-
-/*iframe {
-  width: 100%;
-  min-height: 650px;
-}
-
-@media screen and (max-width:860px){ 
-  iframe {
-    min-height: 360px;
+  #back {
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 175px;
   }
 }
-
-@media screen and (max-width:640px){ 
-  iframe {
-    min-height: 200px;
-  }
-}*/
 
 iframe {
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 #wrapper {
-  position: absolute;
-  margin: auto;
-  height: 100%;
-  width: 100%;
+  position: fixed;
+  margin: auto;    
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 999998;
+  background-color: black;
 }
 
 .pageloader {
   background-color: hsla(40,100%,60%,1); /* or #03A9F4;*/
+}
+
+.heading {
+  padding-top: 20px;
+}
+
+#back {
+  position: fixed;
+  bottom: 0px;
+  left: 15px;
+  padding: 10px;
+}
+
+
+
+#back > *:first-child {
+  margin-right: 25px; 
 }

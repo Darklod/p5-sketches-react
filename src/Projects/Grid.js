@@ -5,14 +5,15 @@ class Grid extends Component {
     constructor(props) {
         super(props);
         this.state = { arr: [[]] };
+        this.columns = 4;
     }
 
     componentDidMount() {
         var tmp = [];
         
         for (var i = 0; i < this.props.list.length; i++) {
-            if (i % 4 === 0) {
-                tmp.push(this.props.list.slice(i, i + 4));
+            if (i % this.columns === 0) {
+                tmp.push(this.props.list.slice(i, i + this.columns));
             }
         }
 
@@ -24,8 +25,8 @@ class Grid extends Component {
     render() {
         return (
             <div>
-                {this.state.arr.map((item, index) => {
-                    return <Row key={'row' + index} items={item}/>
+                {this.state.arr.map((item, index) => {                        
+                    return <Row key={Math.random()} items={item} folder={this.props.folder}/>
                 })}
             </div>
         )

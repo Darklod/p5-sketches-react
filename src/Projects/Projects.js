@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Grid from './Grid';
 
 import { Section, Icon } from 'reactbulma';
+import { Redirect } from 'react-router-dom';
 
 class Projects extends Component {
     constructor (props) {
@@ -10,6 +11,10 @@ class Projects extends Component {
             projects: []
         }
         this.handleScroll = this.handleScroll.bind(this);
+    }
+
+    componentWillReceiveProps (newProps) {
+        this.loadProjects(newProps);  
     }
 
     render () {
@@ -25,6 +30,15 @@ class Projects extends Component {
         )
     }
 
+    componentDidMount() {      
+        this.loadProjects(this.props);  
+        window.addEventListener('scroll', this.handleScroll);
+    };
+    
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+    };
+    
     scrollToTop () {
         window.scroll({
             behavior: 'smooth',
@@ -33,31 +47,34 @@ class Projects extends Component {
         });
     }
 
-    componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll);
-        fetch('/sketches/projects.json').then((res) => {
-            return res.json()
-        }).then((data) => {
-            // console.log(data)
-            data = data.filter((x) => x.indexOf('.') === -1);
-            this.setState({
-                projects: <Grid list={data} key={0}/>
-            });
-        })
-    };
-    
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
-    };
-    
     handleScroll(event) {
         var top = event.target.scrollingElement.scrollTop;
         this.refs.up.style.opacity = top/100;
     };
+
+    loadProjects (props) {
+        var folder = '';
+        var params = props.match.params;
+
+        if (params.folder === 'sketches') params.folder = '';
+        if (params.folder) folder = '/' + params.folder + '/';        
+
+        fetch('/sketches' + folder + '/projects.json').then((res) => {
+            return res.json()
+        }).catch((ex) => {
+            console.log(ex);
+            this.setState({
+                projects: <Redirect to="NoMatch"/>
+            });
+        }).then((data) => {
+            if (data !== null)  
+                this.setState({
+                    projects: <Grid list={data} folder={params.folder} key={"grid"}/>
+                });
+        })
+    }
 }
 
 // COSE.... filtri categorie... boh Elenco<br/><br/>
-
-
 
 export default Projects;

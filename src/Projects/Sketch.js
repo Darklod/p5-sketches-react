@@ -1,14 +1,19 @@
 import React from 'react';
-import { Button } from 'reactbulma/lib/components';
+import { Button, Box } from 'reactbulma';
 
 class Sketch extends React.Component {
     render () {
         return (
             <div id="wrapper">
-                <Button danger onClick={() => this.props.history.goBack()}>
-                    back
-                </Button>
-                <iframe title="sketch" src={`/sketches/${this.props.match.params.id}`} />
+                <Box id="back">
+                    <Button danger onClick={() => this.props.history.goBack()}>
+                        Back
+                    </Button>
+                    <Button warning onClick={() => this.props.history.push('/')}>
+                        Home
+                    </Button>
+                </Box>
+                <iframe title="sketch" scrolling="no" src={`/sketches/${this.props.match.params.id}`} />
             </div>
         )
     }

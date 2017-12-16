@@ -11,7 +11,9 @@ class Project extends Component {
             scripts: [],
             toggle: false,
             active: 0,
-            loading: false
+            loading: false,
+            folder: null,
+            path: null
         };
     }
 
@@ -24,7 +26,7 @@ class Project extends Component {
                             <Box className="back">
                                 <div className="columns">
                                     <div className="column">
-                                        <Button className="wide" danger onClick={() => { this.props.history.push('/') }}>Back</Button>
+                                        <Button className="wide" danger onClick={() => { this.props.history.goBack(); }}>Back</Button>
                                     </div>
                                     <div className="column">
                                         {/*
@@ -72,7 +74,7 @@ class Project extends Component {
                             {!this.state.toggle?
                                 <Box id="pan-sketch">
                                     <figure className="image is-2by1" id="preview">
-                                        <img src={`/sketches/${this.props.match.params.id}/thumbnail.webp`} alt="preview"/>
+                                        <img src={`${this.state.path + this.props.match.params.id}/thumbnail.webp`} alt="preview"/>
                                     </figure>
                                     <br/>
                                     <h4 className="title is-4 has-text-dark">{this.props.match.params.id}</h4>
@@ -81,7 +83,7 @@ class Project extends Component {
                                     <Button className="is-pulled-right is-info" onClick={()=>{ 
                                         this.setState({ loading: true });  
                                         setTimeout(()=> {
-                                            this.props.history.push(`/projects/${this.props.match.params.id}`);
+                                            this.props.history.push(`/projects/${this.props.match.params.id}${this.folder?'?f=' + this.folder:''}`);
                                             // window.location.href = `/sketches/${this.props.match.params.id}`;
                                         }, 1500);
                                     }}>
@@ -118,13 +120,29 @@ class Project extends Component {
         })
     }
 
+    componentWillMount() {
+        var path = "/sketches/";
+        
+        const params = new URLSearchParams(this.props.location.search); 
+        const folder = params.get('f');
+
+        if (folder !== null) path += folder + "/"; 
+
+        this.setState({
+            path,
+            folder
+        })
+    }
+
     componentDidMount() {
-        let folder = '/sketches/' + this.props.match.params.id + '/';
-        this.readInfo(folder + 'info.json');
+        let f = this.state.path + this.props.match.params.id + '/';
+        this.readInfo(f + 'info.json');
     }
 
     readInfo = file => {
-        let folder = '/sketches/' + this.props.match.params.id + '/';
+        let folder = this.state.path + this.props.match.params.id + '/';
+
+        console.log(folder);
 
         axios.get(file).then((res) => {
             this.setState({description: res.data.description})
