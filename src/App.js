@@ -5,6 +5,7 @@ import Projects from './Projects/Projects';
 import Details from './Projects/Details';
 import Sketch from './Projects/Sketch';
 
+import LocationListener from './LocationListener';
 import AutoScrollToTop from './AutoScrollToTop';
 import NoMatch from './NoMatch';
 import Header from './Header';
@@ -17,12 +18,13 @@ class App extends Component {
     return (
       <Router>
         <AutoScrollToTop>
-          <Header/>
+        <LocationListener {...this.props}/>
+        <Header/>
 
           <Container>
-            <Switch>
+            <Switch onChange={(a) => console.log(a)}>
               <Route exact path="/" component={Projects}/>
-              
+                
               <Route exact path="/projects/:folder?" component={Projects}/>
               <Route exact path="/projects/:folder/:id" component={Sketch}/>
               <Route exact path="/projects/:folder/:id/details" component={Details}/>

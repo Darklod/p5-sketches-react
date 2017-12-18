@@ -96,6 +96,7 @@ class Project extends Component {
                     </div>
                     <div className={"pageloader " + (this.state.loading?'is-active':'')}><span className="title">Loading...</span></div>
                 </Section>
+                <br/>
             </div>
         )
     }

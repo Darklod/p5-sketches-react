@@ -11,9 +11,10 @@ import axios from 'axios';
 function ProjectsList(props) {
     const list = props.list;
     const folder = props.folder;
+    const filterProjects = props.filterProjects;
 
     if (list && list.length) {
-        return <List list={list} folder={folder} key={"list"}/>
+        return <List list={list} filterProjects={filterProjects} folder={folder} key={"list"}/>
     } else {
         return null;
     }
@@ -38,7 +39,7 @@ class Projects extends Component {
                         <li className="is-active"><a aria-current="page">{this.props.match.params.folder}</a></li>
                     </ul>:null}
                 </nav>
-                <ProjectsList list={this.state.projects} folder={this.state.folder} />
+                <ProjectsList list={this.state.projects} filterProjects={this.filterProjects} folder={this.state.folder} />
                 <ScrollToTop />
                 {this.isFolder()?
                     <div className="left" onClick={() => this.props.history.goBack()}>
@@ -62,11 +63,11 @@ class Projects extends Component {
         this.setState({ folder: this.props.match.params.folder || 'sketches' }, (folder) => this.loadProjects(this.state.folder));
     }
     
-    loadProjects (folder) {
+    loadProjects(folder) {
         const url = '/sketches' + (folder === 'sketches'? '':'/'+ folder) + '/projects.json';
         axios.get(url).then((res) => {
             if (res.data !== null)
-            {   
+            {
                 folder = folder === 'sketches' ? '': folder 
                 this.setState({
                     projects: res.data,
@@ -79,6 +80,16 @@ class Projects extends Component {
                 projects: null
             });
         })
+    }
+
+    filterProjects(tag) {
+        console.log(tag);
+        if (this.state.projects) {
+            var np = this.state.projects.filter((p)=> { return p.tag === tag })
+            this.setState({
+                projects: np
+            })
+        }
     }
 
     isFolder () {

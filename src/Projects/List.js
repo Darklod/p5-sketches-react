@@ -8,7 +8,7 @@ class List extends Component {
                 {this.props.list && this.props.list.map((item, index) => {                     
                     return (
                         <div className="column is-one-quarter" key={item.id}>
-                            <Project item={item} folder={this.props.folder}/>
+                            <Project item={item} {...this.props}/>
                         </div>
                     )
                 })}

@@ -4,7 +4,7 @@ import { Icon } from 'reactbulma';
 class Footer extends React.Component {
     render () {
         return (
-            <footer className={"footer" + (this.stickyFooter() ? 'sticky-footer':'')}>
+            <footer className="footer">
                 <nav className="level">
                 <div className="level-left">
                     <div className="level-item">
@@ -39,22 +39,6 @@ class Footer extends React.Component {
 
     handleClick = (el) => {
         window.open(el.target.getAttribute('href'));
-    }
-
-    constructor(props) {
-        super(props);
-        this.state = { windowHeight: 0, bodyHeight: 0};
-    }
-
-    componentWillMount() {
-        this.setState({
-            windowHeight: window.innerHeight,
-            bodyHeight: document.documentElement.scrollHeight
-        }, console.log(this.state))
-    }
-
-    stickyFooter() {
-        return this.state.bodyHeight > this.state.windowHeight;
     }
 }
 
