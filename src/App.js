@@ -5,7 +5,7 @@ import Projects from './Projects/Projects';
 import Details from './Projects/Details';
 import Sketch from './Projects/Sketch';
 
-import ScrollToTop from './ScrollToTop';
+import AutoScrollToTop from './AutoScrollToTop';
 import NoMatch from './NoMatch';
 import Header from './Header';
 import Footer from './Footer';
@@ -16,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <ScrollToTop>
+        <AutoScrollToTop>
           <Header/>
 
           <Container>
@@ -32,7 +32,7 @@ class App extends Component {
           </Container>
 
           <Footer/>
-        </ScrollToTop>
+        </AutoScrollToTop>
       </Router>
     )
   }

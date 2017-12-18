@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import List from './List';
-import ScrollToUp from '../ScrollToUp';
+import { Link } from 'react-router-dom';
 
-import {Section} from 'reactbulma';
-//import {Redirect} from 'react-router-dom';
+import List from './List';
+import ScrollToTop from '../ScrollToTop';
+
+import {Section, Icon} from 'reactbulma';
 import axios from 'axios';
 
 
@@ -30,8 +31,22 @@ class Projects extends Component {
     render () {
         return (
             <Section>
+                <nav className="breadcrumb is-right is-medium" aria-label="breadcrumbs">
+                    {this.isFolder()?
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        <li className="is-active"><a aria-current="page">{this.props.match.params.folder}</a></li>
+                    </ul>:null}
+                </nav>
                 <ProjectsList list={this.state.projects} folder={this.state.folder} />
-                <ScrollToUp />
+                <ScrollToTop />
+                {this.isFolder()?
+                    <div className="left" onClick={() => this.props.history.goBack()}>
+                        <Icon>
+                            <i className="fa fa-chevron-left fa-lg"></i>
+                        </Icon>
+                    </div>
+                :null}
             </Section>
         )
     }
@@ -64,6 +79,10 @@ class Projects extends Component {
                 projects: null
             });
         })
+    }
+
+    isFolder () {
+        return this.props.match.params.folder !== 'sketches' && this.props.match.params.folder
     }
 }
 

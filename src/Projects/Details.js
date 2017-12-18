@@ -29,18 +29,6 @@ class Project extends Component {
                                         <Button className="wide" danger onClick={() => { this.props.history.goBack(); }}>Back</Button>
                                     </div>
                                     <div className="column">
-                                        {/*
-                                            <div className="field">
-                                                <input id="switchExample" type="checkbox" className="switch is-medium" 
-                                                        onChange={() => { 
-                                                            this.setState({
-                                                                toggle: !this.state.toggle 
-                                                            }); 
-                                                        }}
-                                                        checked={this.state.toggle}/>
-                                                <label htmlFor="switchExample">{this.state.toggle?'Sketch':'Scripts'}</label>
-                                            </div>
-                                        */}
                                         <Button className="wide" info onClick={() => { 
                                             this.setState({
                                                 toggle: !this.state.toggle 
@@ -83,8 +71,7 @@ class Project extends Component {
                                     <Button className="is-pulled-right is-info" onClick={()=>{ 
                                         this.setState({ loading: true });  
                                         setTimeout(()=> {
-                                            this.props.history.push(`/projects/${this.props.match.params.id}${this.folder?'?f=' + this.folder:''}`);
-                                            // window.location.href = `/sketches/${this.props.match.params.id}`;
+                                            this.props.history.push(`/projects${this.state.path + this.props.match.params.id}`);
                                         }, 1500);
                                     }}>
                                     Open
@@ -100,15 +87,14 @@ class Project extends Component {
                                                 <h4 className="title is-4 has-text-dark">{script.name}</h4>
                                                 <pre>{script.data}</pre>
                                             </div>
-                                            : ''
+                                            : null
                                         )
                                     })}
                                 </Box>
                             }
-                            
-                            <div className={"pageloader " + (this.state.loading?'is-active':'')}><span className="title">Loading...</span></div>
                         </div>
                     </div>
+                    <div className={"pageloader " + (this.state.loading?'is-active':'')}><span className="title">Loading...</span></div>
                 </Section>
             </div>
         )
@@ -123,9 +109,8 @@ class Project extends Component {
     componentWillMount() {
         var path = "/sketches/";
         
-        const params = new URLSearchParams(this.props.location.search); 
-        const folder = params.get('f');
-
+        var folder = this.props.match.params.folder;
+        if (folder === 'sketches') folder = null;
         if (folder !== null) path += folder + "/"; 
 
         this.setState({
@@ -156,7 +141,6 @@ class Project extends Component {
             });
 
             Promise.all(promises).then((res) => {
-                // console.log(res)
                 this.setState({scripts: scripts})
             })
         }).catch((err) => {

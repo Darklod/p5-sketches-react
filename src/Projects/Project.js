@@ -13,7 +13,9 @@ class Project extends React.Component {
     render () {
         return (
             <Card>
-                <Card.Image src={`/sketches/${(this.props.folder?this.props.folder + '/':'') + this.props.item.name}/thumbnail.webp`} square='2by1' alt="thumbnail"/>
+                <Link to={this.state.url}>
+                    <Card.Image src={`/sketches/${(this.props.folder?this.props.folder + '/':'') + this.props.item.name}/thumbnail.webp`} square='2by1' alt="thumbnail"/>
+                </Link>
                 <Card.Content>
                     <Content>
                         <span className="is-centered">
@@ -21,6 +23,16 @@ class Project extends React.Component {
                                 {this.props.item.name}
                             </Link>
                         </span>
+                        
+                        <div className="tags is-right">
+                            {
+                                this.props.item.tags && this.props.item.tags.length !== 0 ? 
+                                this.props.item.tags.map((tag, i) => {
+                                    return <span key={i} className="tag is-dark" onClick={() => this.filterProjects(tag)}>{tag}</span>; 
+                                }):
+                                <span className="tag hide"></span>
+                            }
+                        </div>
                     </Content>
                 </Card.Content>
             </Card>
@@ -35,6 +47,10 @@ class Project extends React.Component {
         }
 
         this.setState({ url })
+    }
+
+    filterProjects (tag) {
+        console.log(tag);
     }
 }
 export default Project;
