@@ -1,76 +1,68 @@
 import React, { Component } from 'react';
-import Grid from './Grid';
+import List from './List';
+import ScrollToUp from '../ScrollToUp';
 
-import { Section, Icon } from 'reactbulma';
-import { Redirect } from 'react-router-dom';
+import {Section} from 'reactbulma';
+//import {Redirect} from 'react-router-dom';
+import axios from 'axios';
+
+
+function ProjectsList(props) {
+    const list = props.list;
+    const folder = props.folder;
+
+    if (list && list.length) {
+        return <List list={list} folder={folder} key={"list"}/>
+    } else {
+        return null;
+    }
+}
 
 class Projects extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            projects: []
+            projects: [],
+            folder: 'sketches'
         }
-        this.handleScroll = this.handleScroll.bind(this);
-    }
-
-    componentWillReceiveProps (newProps) {
-        this.loadProjects(newProps);  
     }
 
     render () {
         return (
             <Section>
-                <div ref="up" className="up" onClick={() => this.scrollToTop()}>
-                    <Icon>
-                        <i className="fa fa-chevron-up fa-lg"></i>
-                    </Icon>
-                </div>
-                {this.state.projects}
+                <ProjectsList list={this.state.projects} folder={this.state.folder} />
+                <ScrollToUp />
             </Section>
         )
     }
 
-    componentDidMount() {      
-        this.loadProjects(this.props);  
-        window.addEventListener('scroll', this.handleScroll);
-    };
-    
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
-    };
-    
-    scrollToTop () {
-        window.scroll({
-            behavior: 'smooth',
-            left: 0,
-            top: 0
-        });
+    componentWillReceiveProps (newProps) {
+        var params = newProps.match.params;
+
+        if (params.folder !== this.state.folder)
+            this.setState({ folder: params.folder || 'sketches' }, (folder) => this.loadProjects(this.state.folder));
     }
 
-    handleScroll(event) {
-        var top = event.target.scrollingElement.scrollTop;
-        this.refs.up.style.opacity = top/100;
-    };
-
-    loadProjects (props) {
-        var folder = '';
-        var params = props.match.params;
-
-        if (params.folder === 'sketches') params.folder = '';
-        if (params.folder) folder = '/' + params.folder + '/';        
-
-        fetch('/sketches' + folder + '/projects.json').then((res) => {
-            return res.json()
+    componentDidMount() {   
+        this.setState({ folder: this.props.match.params.folder || 'sketches' }, (folder) => this.loadProjects(this.state.folder));
+    }
+    
+    loadProjects (folder) {
+        const url = '/sketches' + (folder === 'sketches'? '':'/'+ folder) + '/projects.json';
+        axios.get(url).then((res) => {
+            if (res.data !== null)
+            {   
+                folder = folder === 'sketches' ? '': folder 
+                this.setState({
+                    projects: res.data,
+                    folder
+                });
+            }
         }).catch((ex) => {
             console.log(ex);
             this.setState({
-                projects: <Redirect to="NoMatch"/>
+                projects: null
             });
-        }).then((data) => {
-            if (data !== null)  
-                this.setState({
-                    projects: <Grid list={data} folder={params.folder} key={"grid"}/>
-                });
         })
     }
 }

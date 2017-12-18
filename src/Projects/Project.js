@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import { Card, Content } from 'reactbulma'
+import {Card, Content} from 'reactbulma'
 
 class Project extends React.Component {
     constructor (props) {
@@ -30,7 +30,7 @@ class Project extends React.Component {
     componentDidMount () {
         var url = '/projects/' + this.props.item.name + '';
 
-        if (!this.props.item.items) {
+        if (!this.props.item.is_folder) {
             url = '/projects/' + (this.props.folder || 'sketches') + '/' + this.props.item.name + '/details';
         }
 

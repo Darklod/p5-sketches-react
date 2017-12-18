@@ -56,7 +56,7 @@ class Project extends Component {
                                     <p className="menu-label">Scripts</p>
                                     <ul className="menu-list">
                                         {this.state.scripts.map((script, i) => {
-                                            return <li>
+                                            return <li key={i}>
                                                 <a className={this.state.active===i?'is-active':''} 
                                                     onClick={() => {
                                                         this.setState({
@@ -96,7 +96,7 @@ class Project extends Component {
                                     {this.state.scripts.map((script, i) => {
                                         return (
                                             this.state.active === i ?
-                                            <div>
+                                            <div key={i}>
                                                 <h4 className="title is-4 has-text-dark">{script.name}</h4>
                                                 <pre>{script.data}</pre>
                                             </div>
