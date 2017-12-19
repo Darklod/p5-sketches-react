@@ -194,7 +194,7 @@ iframe {
 }
 
 .tag.hide {
-  background-color: white;
+  visibility: hidden;
 }
 
 .tag {
@@ -204,4 +204,21 @@ iframe {
 
 .tag:hover {
   color: pink;
+}
+
+.right {
+  flex-basis: 100%;
+}
+
+.top-nav ul {
+  align-items: flex-end;
+}
+.top-nav ul > li {
+  vertical-align: top;
+}
+.top-nav .tags:not(:last-child) {
+  margin-bottom: 0;
+}
+.top-nav {
+  margin-bottom: 1rem;
 }

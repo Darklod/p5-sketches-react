@@ -28,7 +28,7 @@ class Project extends React.Component {
                             {
                                 this.props.item.tags && this.props.item.tags.length !== 0 ? 
                                 this.props.item.tags.map((tag, i) => {
-                                    return <span key={i} className="tag is-dark" onClick={() => this.props.filterProjects(tag)}>{tag}</span>; 
+                                    return <span key={i} className="tag is-dark" onClick={() => this.props.addFilter(tag)}>{tag}</span>; 
                                 }):
                                 <span className="tag hide"></span>
                             }
@@ -47,10 +47,6 @@ class Project extends React.Component {
         }
 
         this.setState({ url })
-    }
-
-    filterProjects (tag) {
-        console.log(tag);
     }
 }
 export default Project;

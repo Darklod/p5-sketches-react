@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import List from './List';
-import ScrollToTop from '../ScrollToTop';
+import ScrollToTop from '../Utils/ScrollToTop';
 
 import {Section, Icon} from 'reactbulma';
 import axios from 'axios';
@@ -10,11 +10,9 @@ import axios from 'axios';
 
 function ProjectsList(props) {
     const list = props.list;
-    const folder = props.folder;
-    const filterProjects = props.filterProjects;
 
     if (list && list.length) {
-        return <List list={list} filterProjects={filterProjects} folder={folder} key={"list"}/>
+        return <List {...props} key={"list"}/>
     } else {
         return null;
     }
@@ -25,21 +23,30 @@ class Projects extends Component {
         super(props);
         this.state = {
             projects: [],
-            folder: 'sketches'
+            folder: 'sketches',
+            filter: null
         }
+        this.addFilter = this.addFilter.bind(this);
     }
 
     render () {
         return (
             <Section>
-                <nav className="breadcrumb is-right is-medium" aria-label="breadcrumbs">
-                    {this.isFolder()?
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li className="is-active"><a aria-current="page">{this.props.match.params.folder}</a></li>
-                    </ul>:null}
-                </nav>
-                <ProjectsList list={this.state.projects} filterProjects={this.filterProjects} folder={this.state.folder} />
+                <div className="top-nav">
+                    <nav className="breadcrumb is-right is-medium" aria-label="breadcrumbs">
+                        {this.state.filter &&
+                        <div className="tags has-addons">
+                            <span className="tag is-info">{this.state.filter}</span>
+                            <a className="tag is-delete is-dark" onClick={() => this.removeFilter()}> </a>
+                        </div>}
+                        {this.isFolder() &&
+                        <ul>
+                            <li><Link to="/">Home</Link></li>
+                            <li className="is-active"><a aria-current="page">{this.props.match.params.folder}</a></li>
+                        </ul>}
+                    </nav>
+                </div>
+                <ProjectsList list={this.state.projects} filter={this.state.filter} addFilter={this.addFilter} folder={this.state.folder} />
                 <ScrollToTop />
                 {this.isFolder()?
                     <div className="left" onClick={() => this.props.history.goBack()}>
@@ -82,14 +89,11 @@ class Projects extends Component {
         })
     }
 
-    filterProjects(tag) {
-        console.log(tag);
-        if (this.state.projects) {
-            var np = this.state.projects.filter((p)=> { return p.tag === tag })
-            this.setState({
-                projects: np
-            })
-        }
+    addFilter(tag) {
+        this.setState({ filter: tag });
+    }
+    removeFilter() {
+        this.setState({ filter: null });
     }
 
     isFolder () {

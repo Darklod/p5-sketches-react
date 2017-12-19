@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Projects from './Projects/Projects';
-import Details from './Projects/Details';
-import Sketch from './Projects/Sketch';
+import Projects from './Components/Projects/Projects';
+import Details from './Components/Projects/Details';
+import Sketch from './Components/Projects/Sketch';
 
-import LocationListener from './LocationListener';
-import AutoScrollToTop from './AutoScrollToTop';
-import NoMatch from './NoMatch';
-import Header from './Header';
-import Footer from './Footer';
+import LocationListener from './Components/Utils/LocationListener';
+import AutoScrollToTop from './Components/Utils/AutoScrollToTop';
+import NoMatch from './Components/NoMatch';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
 
 import {Container} from 'reactbulma';
 
