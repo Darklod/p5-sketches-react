@@ -1,5 +1,5 @@
 # p5-sketches-react
-My personal creations using p5.js framework in a website written in reactjs
+My personal p5.js creations in a reactjs website
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
