@@ -1,0 +1,7 @@
+{
+    "description": "Sfera Pelosa che ruota.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

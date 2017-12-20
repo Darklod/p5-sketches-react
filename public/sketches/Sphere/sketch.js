@@ -1,16 +1,16 @@
-cuantos = 2000;
-lista = [];
-radio = 50;
+n = 2000;
+list = [];
+r = 50;
 rx = 0;
 ry = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
 
-  radio = height / 4.5;
+  r = height / 4.5;
 
-  for (var i = 0; i < cuantos; i++) {
-    lista.push(new Pelo());
+  for (var i = 0; i < n; i++) {
+    list.push(new Hair());
   }
   noiseDetail(3);
 }
@@ -28,23 +28,23 @@ function draw() {
   rotateX(ry);
   fill(0);
   noStroke();
-  sphere(radio);
+  sphere(r);
   
   fill(255,255,100);
-  for (var i = 0; i < lista.length; i++) {
-    lista[i].dibujar();
+  for (var i = 0; i < list.length; i++) {
+    list[i].draw();
   }
 
 }
 
 
-function Pelo() {
-  this.z = random(-radio, radio);
+function Hair() {
+  this.z = random(-r, r);
   this.phi = random(TWO_PI);
-  this.largo = random(1.15, 1.2);
-  this.theta = asin(this.z / radio);
+  this.length = random(1.15, 1.2);
+  this.theta = asin(this.z / r);
 
-  this.dibujar = function() {
+  this.draw = function() {
 
     var off = (noise(millis() * 0.0005, sin(this.phi)) - 0.5) * 0.3;
     var offb = (noise(millis() * 0.0007, sin(this.z) * 0.01) - 0.5) * 0.3;
@@ -52,17 +52,17 @@ function Pelo() {
     var thetaff = this.theta + off;
     var phff = this.phi + offb;
     
-    var x = radio * cos(this.theta) * cos(this.phi);
-    var y = radio * cos(this.theta) * sin(this.phi);
-    var z = radio * sin(this.theta);
+    var x = r * cos(this.theta) * cos(this.phi);
+    var y = r * cos(this.theta) * sin(this.phi);
+    var z = r * sin(this.theta);
 
-    var xo = radio * cos(thetaff) * cos(phff);
-    var yo = radio * cos(thetaff) * sin(phff);
-    var zo = radio * sin(thetaff);
+    var xo = r * cos(thetaff) * cos(phff);
+    var yo = r * cos(thetaff) * sin(phff);
+    var zo = r * sin(thetaff);
 
-    var xb = xo * this.largo;
-    var yb = yo * this.largo;
-    var zb = zo * this.largo;
+    var xb = xo * this.length;
+    var yb = yo * this.length;
+    var zb = zo * this.length;
 
     strokeWeight(1);
     beginShape(LINES);

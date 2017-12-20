@@ -1,0 +1,7 @@
+{
+    "description": "Cerchio di linee che hanno per lunghezza un valore randomico.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

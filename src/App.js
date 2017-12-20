@@ -20,11 +20,10 @@ class App extends Component {
         <AutoScrollToTop>
         <LocationListener {...this.props}/>
         <Header/>
-
-          <Container>
-            <Switch onChange={(a) => console.log(a)}>
+          <Container id="content">
+            <Switch>
               <Route exact path="/" component={Projects}/>
-                
+               
               <Route exact path="/projects/:folder?" component={Projects}/>
               <Route exact path="/projects/:folder/:id" component={Sketch}/>
               <Route exact path="/projects/:folder/:id/details" component={Details}/>
@@ -32,7 +31,6 @@ class App extends Component {
               <Route component={NoMatch}/>
             </Switch>
           </Container>
-
           <Footer/>
         </AutoScrollToTop>
       </Router>

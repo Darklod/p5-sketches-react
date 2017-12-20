@@ -13,9 +13,10 @@ class Project extends React.Component {
     render () {
         return (
             <Card>
-                <Link to={this.state.url}>
-                    <Card.Image src={`/sketches/${(this.props.folder?this.props.folder + '/':'') + this.props.item.name}/thumbnail.webp`} square='2by1' alt="thumbnail"/>
-                </Link>
+                <Card.Image onClick={() => this.props.history.push(this.state.url)} 
+                            src={`/sketches/${(this.props.folder?this.props.folder + '/':'') + this.props.item.name}/thumbnail.webp`} 
+                            square='2by1'
+                            alt="thumbnail"/>
                 <Card.Content>
                     <Content>
                         <span className="is-centered">

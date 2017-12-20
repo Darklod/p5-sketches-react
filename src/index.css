@@ -3,20 +3,9 @@ body {
   background: linear-gradient(hsla(40,100%,60%,1),#03A9F4);   
 }
 
-.sticky-footer {
-  position: absolute;
-  width: 100%;
-}
-
 @media screen and (min-width: 769px) {
   body {
     height: 100%;
-  }
-
-  .sticky-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
   }
 }
 
@@ -87,6 +76,7 @@ iframe:focus {
 img {
   line-height: 150px;
   text-align: center;
+  cursor: pointer;
 }
 
 .wide {
@@ -102,7 +92,7 @@ img {
 }
 
 pre {
-  height: 400px;
+  max-height: 500px;
 }
 
 .up, .left {
@@ -203,7 +193,7 @@ iframe {
 }
 
 .tag:hover {
-  color: pink;
+  color: red;
 }
 
 .right {
@@ -222,3 +212,8 @@ iframe {
 .top-nav {
   margin-bottom: 1rem;
 }
+
+#content {
+  min-height: calc(100vh - 1.5rem - 25px - 20px);
+}
+

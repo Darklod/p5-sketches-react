@@ -1,5 +1,5 @@
 {
-    "description": "Rapprasentazione di una lossodromia attraverso una formula parametrica.",
+    "description": "Rapprasentazione di una lossodromia attraverso una formula parametrica. La lossodromia è una spirale logaritmica in una sfera, che taglia i meridiani con un certo angolo.",
     "scripts": [
         "sketch.js",
         "index.html"

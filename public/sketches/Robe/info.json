@@ -1,0 +1,7 @@
+{
+    "description": "Pattern creato con forme geometriche.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import List from './List';
 import ScrollToTop from '../Utils/ScrollToTop';
 
-import {Section, Icon} from 'reactbulma';
+import {Section} from 'reactbulma';
 import axios from 'axios';
 
 
@@ -16,6 +16,16 @@ function ProjectsList(props) {
     } else {
         return null;
     }
+}
+
+function Breadcrumb(props) {
+    return (
+        <ul>
+            {props.folder && <li><Link to="/">Home</Link></li>}
+            {props.folder && <li className={!props.sketch?"is-active":""}><a aria-current="page">{props.folder}</a></li>}
+            {props.sketch && <li className="is-active"><a aria-current="page">{props.sketch}</a></li>}
+        </ul>
+    )
 }
 
 class Projects extends Component {
@@ -39,22 +49,22 @@ class Projects extends Component {
                             <span className="tag is-info">{this.state.filter}</span>
                             <a className="tag is-delete is-dark" onClick={() => this.removeFilter()}> </a>
                         </div>}
-                        {this.isFolder() &&
-                        <ul>
-                            <li><Link to="/">Home</Link></li>
-                            <li className="is-active"><a aria-current="page">{this.props.match.params.folder}</a></li>
-                        </ul>}
+                        <Breadcrumb folder={this.props.match.params.folder} sketch={this.props.match.params.id}/>
                     </nav>
                 </div>
-                <ProjectsList list={this.state.projects} filter={this.state.filter} addFilter={this.addFilter} folder={this.state.folder} />
+                <ProjectsList list={this.state.projects} 
+                              filter={this.state.filter} 
+                              addFilter={this.addFilter} 
+                              folder={this.state.folder} 
+                              {...this.props}/>
                 <ScrollToTop />
-                {this.isFolder()?
+                {/*this.isFolder()?
                     <div className="left" onClick={() => this.props.history.goBack()}>
                         <Icon>
                             <i className="fa fa-chevron-left fa-lg"></i>
                         </Icon>
                     </div>
-                :null}
+                :null*/}
             </Section>
         )
     }
