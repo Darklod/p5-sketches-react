@@ -78,7 +78,7 @@ class Project extends Component {
                                         <img src={`${this.state.path + this.props.match.params.id}/thumbnail.webp`} alt="preview"/>
                                     </figure>
                                     <br/>
-                                    <h4 className="title is-4 has-text-dark">{this.props.match.params.id}</h4>
+                                    <h4 className="title is-4 has-text-dark">{this.props.match.params.id[0].toUpperCase() + this.props.match.params.id.substring(1)}</h4>
                                     <p>{this.state.description}</p>
                                     
                                     <Button className="is-pulled-right is-info" onClick={()=>{ 

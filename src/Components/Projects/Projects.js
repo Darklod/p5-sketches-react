@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import List from './List';
 import ScrollToTop from '../Utils/ScrollToTop';
 
-import {Section} from 'reactbulma';
+import {Section,Box} from 'reactbulma';
 import axios from 'axios';
 
 
@@ -34,7 +34,8 @@ class Projects extends Component {
         this.state = {
             projects: [],
             folder: 'sketches',
-            filter: null
+            filter: null,
+            match: false
         }
         this.addFilter = this.addFilter.bind(this);
     }
@@ -65,6 +66,31 @@ class Projects extends Component {
                         </Icon>
                     </div>
                 :null*/}
+                {this.props.match.params.folder &&
+                <div className={"modal " + (!this.state.match && this.props.match.params.folder.toLowerCase() === 'specials'?"is-active":"")}>
+                    <div className="modal-background"></div>
+                    <div className="modal-content">
+                        <Box>
+                            <h4 className="title is-5 has-text-black">Enter the password</h4>
+                            <div className="field has-addons">
+                                <p className="control has-icons-left is-expanded">
+                                    <input className="input" type="password" id="pwd" placeholder="Password"/>
+                                    <span className="icon is-small is-left">
+                                        <i className="fa fa-lock"></i>
+                                    </span>
+                                </p>
+                            </div>
+                            <div className="field is-grouped is-grouped-right">
+                                <p className="control">
+                                    <button className="button is-info" onClick={() => this.match()}>Go</button>
+                                </p>
+                                <p className="control">
+                                    <Link to="/" className="button is-danger">Back</Link>
+                                </p>
+                            </div>
+                        </Box>
+                    </div>
+                </div>}
             </Section>
         )
     }
@@ -85,7 +111,7 @@ class Projects extends Component {
         axios.get(url).then((res) => {
             if (res.data !== null)
             {
-                folder = folder === 'sketches' ? '': folder 
+                folder = folder === 'sketches' ? '': folder
                 this.setState({
                     projects: res.data,
                     folder
@@ -106,8 +132,13 @@ class Projects extends Component {
         this.setState({ filter: null });
     }
 
-    isFolder () {
+    isFolder() {
         return this.props.match.params.folder !== 'sketches' && this.props.match.params.folder
+    }
+
+    match() {
+        if (document.querySelector('#pwd').value === 'Ciao')
+            this.setState({ match: true });
     }
 }
 
