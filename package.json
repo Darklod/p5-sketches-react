@@ -27,6 +27,7 @@
     "file-loader": "1.1.5",
     "font-awesome": "^4.7.0",
     "fs-extra": "3.0.1",
+    "gh-pages": "^1.1.0",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
     "object-assign": "4.1.1",
@@ -51,6 +52,8 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
@@ -59,6 +62,7 @@
     "type": "git",
     "url": "https://github.com/Darklod/p5-sketches-react.git"
   },
+  "homepage": "https://Darklod.github.io/",
   "devDependencies": {
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6"
