@@ -1,0 +1,8 @@
+{
+    "description": "Particelle che convergono in una posizione randomica formando una parola.",
+    "scripts": [
+        "particles.js",
+        "sketch.js",
+        "index.html"
+    ]
+}

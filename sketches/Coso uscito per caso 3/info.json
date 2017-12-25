@@ -1,0 +1,7 @@
+{
+	"description": "Boh.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

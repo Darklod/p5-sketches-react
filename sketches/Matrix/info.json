@@ -1,0 +1,9 @@
+{
+    "description": "Pioggia verde di caratteri.",
+    "scripts": [
+        "stream.js",
+        "particle.js",
+        "sketch.js",
+        "index.html"
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "description": "Particelle di diversa forma e colore che fluttuano.",
+    "scripts": [
+        "particle.js",
+        "sketch.js",
+        "index.html"
+    ]
+}

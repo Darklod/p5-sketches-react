@@ -1,0 +1,7 @@
+{
+	"description": "DNA generato attraverso una doppia elica destrorsa e linee che le congiungono per rappresentare i nucleotidi.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

@@ -1,0 +1,3 @@
+[0122/140459:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\Nolarry\Reports\Dump: Impossibile trovare il percorso specificato. (0x3)
+[0122/140459:ERROR:registration_protocol_win.cc(82)] TransactNamedPipe: Pipe terminata. (0x6D)
+[0122/140459:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\Nolarry\Reports\Dump: Impossibile trovare il percorso specificato. (0x3)

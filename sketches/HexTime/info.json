@@ -1,0 +1,7 @@
+{
+    "description": "Orologio esadecimale con sfondo che cambia in base al valore.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

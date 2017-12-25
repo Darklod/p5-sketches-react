@@ -1,0 +1,7 @@
+{
+    "description": "Spirale formata da cerchi colorati e di dimensione decrescente.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "description": "Simulazione di fuochi d'artificio con delle particelle, applicando la fisica (velocità, accelerazione, gravità).",
+    "scripts": [
+        "firework.js",
+        "particle.js",
+        "letters.js",
+        "sketch.js",
+        "index.html"
+    ]
+}

@@ -1,0 +1,7 @@
+{
+	"description": "Disegno di un cuore attraverso una formula parametrica.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

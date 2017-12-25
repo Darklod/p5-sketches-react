@@ -1,0 +1,7 @@
+{
+    "description": "Disegno creato dalle linee che collegano due punti in base a un indice incrementale.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

@@ -1,0 +1,7 @@
+{
+	"description": "Disegno creato con cerchi belli colorati.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

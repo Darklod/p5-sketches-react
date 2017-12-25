@@ -1,0 +1,7 @@
+{
+    "description": "Visualizzazione di un moto circolare uniforme.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

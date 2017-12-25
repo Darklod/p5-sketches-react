@@ -1,0 +1,7 @@
+{
+    "description": "Frattale di Mandelbrot.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

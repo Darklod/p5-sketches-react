@@ -1,0 +1,7 @@
+{
+	"description": "Automa cellulare che simula il comportamento dei veicoli nel traffico.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

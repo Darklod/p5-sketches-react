@@ -1,0 +1,7 @@
+{
+    "description": "Disegno formato da linee che congiungono due punti. In base all'angolo dei punti della spirale viene formato un disegno diverso.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

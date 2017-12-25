@@ -1,0 +1,7 @@
+{
+    "description": "Semplice spirale logaritmica.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

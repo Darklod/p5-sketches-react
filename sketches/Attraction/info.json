@@ -1,0 +1,8 @@
+{
+	"description": "Simulazione dell'attrazione gravitazionale di particelle in un punto.",
+    "scripts": [
+        "sketch.js",
+        "particle.js",
+        "index.html"
+    ]
+}

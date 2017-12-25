@@ -1,0 +1,8 @@
+{
+    "description": "Frattale \"gosper curve\" creato usano il sistema di Lindenmayer (L-System).",
+    "scripts": [
+        "lsystem.js",
+        "sketch.js",
+        "index.html"
+    ]
+}

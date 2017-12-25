@@ -1,0 +1,7 @@
+{
+	"description": "Rappresentazione di una clotoide.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

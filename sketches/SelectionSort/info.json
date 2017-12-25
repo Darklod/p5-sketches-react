@@ -1,0 +1,7 @@
+{
+    "description": "Visualizzazione dell'algoritmo di ordinamento \"Selection Sort\".",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

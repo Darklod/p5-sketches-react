@@ -1,0 +1,11 @@
+{
+    "description": "Particelle di diversa forma e colore che fluttuano nascosti dalla maschera di una scritta.",
+    "scripts": [
+        "particle.js",
+        "font-mask.js",
+        "punch-out.js",
+        "particle.js",
+        "sketch.js",
+        "index.html"
+    ]
+}

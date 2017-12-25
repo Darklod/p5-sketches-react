@@ -1,0 +1,7 @@
+{
+	"description": "Visualizzazione dell'algoritmo bubble sort.",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}
