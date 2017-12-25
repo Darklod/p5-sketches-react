@@ -13,7 +13,7 @@ class Sketch extends React.Component {
                         Home
                     </Button>
                 </Box>
-                <iframe title="sketch" scrolling="no" src={`/sketches/${this.props.match.params.id}`} />
+                <iframe title="sketch" scrolling="no" src={`/sketches/${(this.props.match.params.folder==='sketches'? '':this.props.match.params.folder + '/') + this.props.match.params.id}`} />
             </div>
         )
     }

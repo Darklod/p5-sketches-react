@@ -84,7 +84,7 @@ class Project extends Component {
                                     <Button className="is-pulled-right is-info" onClick={()=>{ 
                                         this.setState({ loading: true });  
                                         setTimeout(()=> {
-                                            this.props.history.push(`/projects${this.state.path + this.props.match.params.id}`);
+                                            this.props.history.push(`/projects/${(this.state.folder? this.state.folder + '/' : 'sketches/') + this.props.match.params.id}`);
                                         }, 1500);
                                     }}>
                                     Open
@@ -140,8 +140,6 @@ class Project extends Component {
 
     readInfo = file => {
         let folder = this.state.path + this.props.match.params.id + '/';
-
-        console.log(folder);
 
         axios.get(file).then((res) => {
             this.setState({description: res.data.description})

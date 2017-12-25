@@ -1,0 +1,7 @@
+{
+	"description": "Arctangenti, arctangenti e arctangenti per le luci. Poi aggiunta di rumore randomico per \"smussare\" le linee che formano i cavi e infine la luce diffusa su ogni fonte di luce, tocco di classe ^^. (Che casino la Trigonometria :P)",
+    "scripts": [
+        "sketch.js",
+        "index.html"
+    ]
+}

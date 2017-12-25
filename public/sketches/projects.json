@@ -1,6 +1,6 @@
 [
     { "id": 0, "name": "'Cubo' Figo Colorato", "tags": ["3D"]},
-    { "id": 1, "name": "Albero di Natale", "tags": ["3D"]},
+    { "id": 1, "name": "Albero di Natale", "tags": ["3D","natale"]},
     { "id": 2, "name": "Attraction", "tags": ["fisica"] },
     { "id": 3, "name": "Attraction2", "tags": ["fisica"] },
     { "id": 4, "name": "BubbleSort", "tags": ["ordinamento"]},
